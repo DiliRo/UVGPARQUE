@@ -1,38 +1,14 @@
 package controller;
 
-import java.util.ArrayList;
 import model.Encargado;
-
+import java.util.Random;
 public class EncargadoController {
 
-    private ArrayList<Encargado> listaEncargados;
+    Random random = new Random();
 
-    public EncargadoController() {
-        listaEncargados = new ArrayList<>();
+    public void agregarEncargado(String nombreEncargado){
+        int id = random.nextInt(900000)+100000;
+        Encargado encargado = new Encargado(id,nombreEncargado);
     }
 
-    public boolean agregarEncargado(String nombre, int edad, String codigoEncargado){
-        for (Encargado e : listaEncargados) {
-            if (e.getCodigoEncargado() == codigoEncargado) {
-                return false;
-            }
-        }
-        Encargado encargado = new Encargado(nombre, edad, codigoEncargado);
-        listaEncargados.add(encargado);
-        return true;
-    }
-
-    public ArrayList<Encargado> obtenerEncargados() {
-        return new ArrayList<>(listaEncargados);
-    }
-
-    public Encargado buscarEncargado(String codigoEncargado) {
-        for (Encargado encargado : listaEncargados) {
-            if (encargado.getCodigoEncargado()
-                    .equalsIgnoreCase(codigoEncargado)) {
-                return encargado;
-            }
-        }
-        return null;
-    }
 }

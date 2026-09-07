@@ -59,4 +59,9 @@ public class PuntoAcceso {
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString(){
+        return "Codigo: " + codigo + "\nNombre: " + nombre + "\nUbicacion: " + ubicacion + "\nCapacidad Maxima por Hora: " + capacidadMaximaHora + "\nEstado: " + (estado ? "Abierto" : "Cerrado");
+    }
 }

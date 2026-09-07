@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Parque {
     private String nombre;
     private String codigoIdentificacion;
-    private Encargado encargado;
+    private String nombreEncargado;
     private PuntoAcceso[] puntosAcceso;
     private  ArrayList<Visitante> visitantes;
 
@@ -13,11 +13,12 @@ public class Parque {
         puntosAcceso = new PuntoAcceso[5];
     }
 
-    public Parque(String nombre, String codigoIdentificacion, Encargado encargado){
+    public Parque(String nombre, String codigoIdentificacion, String nombreEncargado){
         this.nombre = nombre;
         this.codigoIdentificacion = codigoIdentificacion;
-        this.encargado = encargado;
+        this.nombreEncargado = nombreEncargado;
         puntosAcceso = new PuntoAcceso[5];
+        visitantes = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -36,12 +37,12 @@ public class Parque {
         this.codigoIdentificacion = codigoIdentificacion;
     }
 
-    public Encargado getEncargado() {
-        return encargado;
+    public String getEncargado() {
+        return nombreEncargado;
     }
 
-    public void setEncargado(Encargado encargado) {
-        this.encargado = encargado;
+    public void setEncargado(String nombreEncargado) {
+        this.nombreEncargado = nombreEncargado;
     }
 
     public PuntoAcceso[] getPuntosAcceso() {
@@ -52,14 +53,16 @@ public class Parque {
         this.puntosAcceso = puntosAcceso;
     }
 
-     public ArrayList<Visitante> getVisitantes() {
+    public ArrayList<Visitante> getVisitantes() {
         return visitantes;
     }
 
-    
-
     public void setVisitantes(ArrayList<Visitante> visitantes) {
         this.visitantes = visitantes;
+    }
+
+    public String toString() {
+        return "Nombre del Parque: " + nombre + "\nCodigo de Identificacion: " + codigoIdentificacion + "\nEncargado: " + nombreEncargado + "\nPuntos de Acceso: " + puntosAcceso.length;
     }
 
 }

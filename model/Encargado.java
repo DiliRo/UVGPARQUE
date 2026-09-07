@@ -1,16 +1,14 @@
 package model;
 
 public class Encargado{
+    private int codigoEncargado;
     private String nombre;
-    private int edad;
-    private String codigoEncargado;
 
     public Encargado(){}
 
-    public Encargado(String nombre, int edad, String codigoEncargado){
-        this.nombre = nombre;
-        this.edad = edad;
+    public Encargado(int codigoEncargado, String nombre){
         this.codigoEncargado = codigoEncargado;
+        this.nombre = nombre;
     }
 
 
@@ -21,22 +19,14 @@ public class Encargado{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
     
-    public String getCodigoEncargado() {
+    public int getCodigoEncargado() {
         return codigoEncargado;
     }
     
     @Override
     public String toString() {
-        return "Código: " + codigoEncargado + ", Nombre: " + nombre + ", Edad: " + edad;
+        return "Código: " + codigoEncargado + ", Nombre: " + nombre;
     }
 }
 

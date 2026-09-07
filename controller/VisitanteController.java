@@ -47,7 +47,7 @@ public class VisitanteController{
     }
 
     public String buscarVisitante(String codigoEntrada){
-         for (Visitante visitante : visitantes) {
+        for (Visitante visitante : visitantes) {
                 if (visitante.getCodigoEntrada().equalsIgnoreCase(codigoEntrada)) {
                     return visitante.toString();
                 }
@@ -55,20 +55,25 @@ public class VisitanteController{
     return  "No se encontro visitante";
     }
 
-    public boolean  editarVisitante(String nombre, int edad, String codigoEntrada, int puntosAcumulados,int cantidadAtracciones){
-        
-        try {
-            if (edad <18 || puntosAcumulados< 0 || cantidadAtracciones < 0) {
-                throw new IllegalArgumentException("Cantidad invalida");
+    public void  editarVisitante(String nombre, int edad, String codigoEntrada, int puntosAcumulados,int cantidadAtracciones){
+        for (Visitante visitante : visitantes) {
+                if (visitante.getCodigoEntrada().equalsIgnoreCase(codigoEntrada)) {
+                    visitante.setNombre(nombre);
+                    visitante.setEdad(edad);
+                    visitante.setCantidadAtracciones(cantidadAtracciones);
+                    visitante.setPuntosAcumulados(puntosAcumulados);
+                }
             }
-
-
-            
-        } catch (IllegalArgumentException e) {
-        }
-        return true;
     }
 
-
+    public String eliminarVistante(String codigoEntrada){
+            for (Visitante visitante : visitantes) {
+                if (visitante.getCodigoEntrada().equalsIgnoreCase(codigoEntrada)) {
+                    visitantes.remove(visitante);
+                    return "Visitante eliminado";
+                }
+            }
+            return "Visitante no eliminado";
+    }
     
 }
