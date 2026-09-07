@@ -1,12 +1,15 @@
 package model;
 
+import java.util.ArrayList;
 public class Parque {
     private String nombre;
     private String codigoIdentificacion;
     private Encargado encargado;
     private PuntoAcceso[] puntosAcceso;
+    private  ArrayList<Visitante> visitantes;
 
     public Parque(){
+        visitantes = new ArrayList<>();
         puntosAcceso = new PuntoAcceso[5];
     }
 
@@ -47,6 +50,16 @@ public class Parque {
 
     public void setPuntosAcceso(PuntoAcceso[] puntosAcceso) {
         this.puntosAcceso = puntosAcceso;
+    }
+
+     public ArrayList<Visitante> getVisitantes() {
+        return visitantes;
+    }
+
+    
+
+    public void setVisitantes(ArrayList<Visitante> visitantes) {
+        this.visitantes = visitantes;
     }
 
 }

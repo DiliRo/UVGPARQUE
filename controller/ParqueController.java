@@ -1,15 +1,15 @@
 package controller;
 
+import java.util.ArrayList;
 import model.Encargado;
 import model.Parque;
-import java.util.ArrayList;
 
 public class ParqueController {
 
     private ArrayList<Parque> listaDeParques;
 
     public ParqueController() {
-        listaDeParques = new ArrayList<Parque>();
+        listaDeParques = new ArrayList<>();
     }
 
     public void crearParque(String nombre, String codigoIdentificacion, Encargado encargado) {

@@ -1,25 +1,23 @@
 package model;
 
-import java.util.ArrayList;
+
 public class PuntoAcceso {
     private String codigo;
     private String nombre;
     private String ubicacion;
     private int capacidadMaximaHora;
     private Boolean estado;
-    private  ArrayList<Visitante> visitantes;
+
     
     public PuntoAcceso(){
-        visitantes = new ArrayList<>();
-    }
+}
 
-    public PuntoAcceso(String codigo, String nombre, String ubicacion, int capacidadMaximaHora, Boolean estado){
+    public PuntoAcceso(String codigo, String nombre, String ubicacion, int capacidadMaximaHora){
         this.codigo = codigo;
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.capacidadMaximaHora = capacidadMaximaHora;
-        this.estado = estado;
-        visitantes = new ArrayList<>();
+        this.estado = true;
     }
 
     public String getCodigo() {
@@ -60,13 +58,5 @@ public class PuntoAcceso {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
-    }
-
-    public ArrayList<Visitante> getVisitantes() {
-        return visitantes;
-    }
-
-    public void setVisitantes(ArrayList<Visitante> visitantes) {
-        this.visitantes = visitantes;
     }
 }

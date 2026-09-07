@@ -50,4 +50,10 @@ public class Visitante{
     public String getCodigoEntrada() {
         return codigoEntrada;
     }
+
+    @Override
+    public String toString() {
+        return "Codigo: " + codigoEntrada + ", Nombre: " + nombre + ", Edad: " + edad + ", Puntos Acumulados: " + puntosAcumulados + ", Cantidad de Atracciones: " + cantidadAtracciones;
+    }
+   
 }

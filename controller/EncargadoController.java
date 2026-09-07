@@ -1,7 +1,7 @@
 package controller;
 
-import model.Encargado;
 import java.util.ArrayList;
+import model.Encargado;
 
 public class EncargadoController {
 

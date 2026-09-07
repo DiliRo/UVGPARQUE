@@ -3,16 +3,20 @@ package controller;
 import model.PuntoAcceso;
 
 public class PuntoAccesoController {
+    private PuntoAcceso puntoAcceso;
 
-    public boolean agregarPuntoAcceso(PuntoAcceso[] puntos, int posicion, PuntoAcceso punto) {
+    public boolean agregarPuntoAcceso(PuntoAcceso[] puntos, int posicion, String codigo, String nombre, String ubicacion, int capacidadMaximaHora) {
         try {
             if (puntos[posicion] != null) {
                 return false;
             }
-            if (punto.getCapacidadMaximaHora() <= 0) {
+
+            puntoAcceso = new PuntoAcceso(codigo, nombre, ubicacion, capacidadMaximaHora);
+            
+            if (puntoAcceso.getCapacidadMaximaHora() <= 0) {
                 throw new IllegalArgumentException("La capacidad debe ser mayor que 0.");
             }
-            puntos[posicion] = punto;
+            puntos[posicion] = puntoAcceso;
             return true;
         } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
             return false;
