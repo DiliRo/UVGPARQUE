@@ -1,9 +1,11 @@
 package controller;
 
 import model.PuntoAcceso;
-
 public class PuntoAccesoController {
+    private ParqueController parqueController;
     private PuntoAcceso puntoAcceso;
+
+     
 
     public boolean agregarPuntoAcceso(PuntoAcceso[] puntos, int posicion, String codigo, String nombre, String ubicacion, int capacidadMaximaHora) {
         try {
@@ -16,6 +18,7 @@ public class PuntoAccesoController {
             if (puntoAcceso.getCapacidadMaximaHora() <= 0) {
                 throw new IllegalArgumentException("La capacidad debe ser mayor que 0.");
             }
+
             puntos[posicion] = puntoAcceso;
             return true;
         } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
@@ -82,4 +85,7 @@ public class PuntoAccesoController {
         }
         return mayor;
     }
+
+
+    
 }

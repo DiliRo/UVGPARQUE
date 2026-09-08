@@ -1,20 +1,16 @@
 package view;
 
-import view.ParqueView;
-
-import view.PuntoAccesoView;
-
-import java.util.Scanner;
-
 import controller.EncargadoController;
-import model.Encargado;
+import controller.ParqueController;
+import java.util.Scanner;
 public class MenuView {
     Scanner sc = new Scanner(System.in);
-    
-    ParqueView parqueView = new ParqueView();
-    PuntoAccesoView puntoAccesoView = new PuntoAccesoView();
+        
+    ParqueController parqueController = new ParqueController();
+    ParqueView parqueView = new ParqueView(parqueController);
+    PuntoAccesoView puntoAccesoView = new PuntoAccesoView(parqueController);
     EncargadoController encargadoController = new EncargadoController();
-
+    VisitanteView visitanteView = new VisitanteView();
 
 
 
@@ -50,12 +46,23 @@ public class MenuView {
                 case 3:
                     puntoAccesoView.buscarPuntoAcceso();
                     break;
-                
-                
+                case 4:
+                    puntoAccesoView.buscarPunto();
+                    break;
+                case 5:
+                    puntoAccesoView.modificarPuntoAcceso();
+                    break;
+                case 6:
+                    puntoAccesoView.eliminarPuntoAcceso();
+                    break;     
+                case 7:
+                    visitanteView.crearVisitante();
+                    break;
+                case 8:
+                    break;
                 case 9:
-
                     break;
             }
-        }while(opcion != 9);
+        }while(opcion != 13);
     }
 }

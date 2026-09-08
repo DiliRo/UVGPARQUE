@@ -62,6 +62,6 @@ public class PuntoAcceso {
 
     @Override
     public String toString(){
-        return "Codigo: " + codigo + "\nNombre: " + nombre + "\nUbicacion: " + ubicacion + "\nCapacidad Maxima por Hora: " + capacidadMaximaHora + "\nEstado: " + (estado ? "Abierto" : "Cerrado");
+        return "\nCodigo: " + codigo + "\nNombre: " + nombre + "\nUbicacion: " + ubicacion + "\nCapacidad Maxima por Hora: " + capacidadMaximaHora + "\nEstado: " + (estado ? "Abierto" : "Cerrado");
     }
 }

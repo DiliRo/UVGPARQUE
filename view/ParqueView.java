@@ -1,13 +1,18 @@
 package view;
 
-import java.util.Scanner;
 import controller.ParqueController;
-import controller.PuntoAccesoController;
+import java.util.Scanner;
 
 public class ParqueView {
+    private ParqueController parqueController;
     Scanner sc = new Scanner(System.in);
-    ParqueController parqueController = new ParqueController();
     
+    
+
+    public ParqueView(
+        ParqueController parqueController) {
+            this.parqueController = parqueController;
+        }   
 
     public void crearParque(){
         System.out.println("Ingrese el nombre del parque");
@@ -20,7 +25,5 @@ public class ParqueView {
         parqueController.crearParque(nombre, codigoIdentificacion, codigoEncargado);
     }
 
-    public void obtenerParques(){
-        System.out.println(parqueController.buscarParques());
-    }
+    
 }

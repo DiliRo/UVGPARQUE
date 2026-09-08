@@ -43,7 +43,7 @@ public class VisitanteController{
                 return "Numero visitante: " + (i + 1) + visitantesTotales.get(i).toString();
             }
         }
-    return "Hola";
+    return "No hay visitantes registrados al parque";
     }
 
     public String buscarVisitante(String codigoEntrada){

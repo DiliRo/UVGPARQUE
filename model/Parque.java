@@ -61,6 +61,7 @@ public class Parque {
         this.visitantes = visitantes;
     }
 
+    @Override
     public String toString() {
         return "Nombre del Parque: " + nombre + "\nCodigo de Identificacion: " + codigoIdentificacion + "\nEncargado: " + nombreEncargado + "\nPuntos de Acceso: " + puntosAcceso.length;
     }
