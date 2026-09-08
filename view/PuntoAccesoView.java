@@ -2,6 +2,7 @@ package view;
 
 import controller.ParqueController;
 import controller.PuntoAccesoController;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import model.PuntoAcceso;
 public class PuntoAccesoView {
@@ -18,27 +19,32 @@ public class PuntoAccesoView {
     
 
 
-    public void crearPuntoAcceso(){
+   public void crearPuntoAcceso(){
+        try {
+            System.out.println("Ingrese cual de los siguientes 5 accesos quiere agregar");
+            int posicion = sc.nextInt();
+            sc.nextLine();
 
+            System.out.println("Ingrese el codigo del punto de acceso");
+            String codigo = sc.nextLine();
 
-        System.out.println("Ingrese cual de los siguientes 5 accesos quiere agregar");
-        int posicion = sc.nextInt();
+            System.out.println("Ingrese el nombre del punto de acceso");
+            String nombre = sc.nextLine();
 
-        sc.nextLine();
+            System.out.println("Ingrese la ubicación");
+            String ubicacion = sc.nextLine();
 
-        System.out.println("Ingrese el codigo del punto de acceso");
-        String codigo = sc.nextLine();
+            System.out.println("Ingrese la capacidad maxima por hora");
+            int capacidad = sc.nextInt();
 
-        System.out.println("Ingrese el nombre del punto de acceso");
-        String nombre = sc.nextLine();
-
-        System.out.println("Ingrese la ubicación");
-        String ubicacion = sc.nextLine();
-
-        System.out.println("Ingrese la capacidad maxima por hora");
-        int capacidad = sc.nextInt();
-        System.out.println("arreglo");
-        puntoAccesoController.agregarPuntoAcceso(parqueController.buscarPuntosAccesos(), (posicion - 1), codigo, nombre, ubicacion, capacidad);
+            sc.nextLine();
+            puntoAccesoController.agregarPuntoAcceso(parqueController.buscarPuntosAccesos(), (posicion - 1), codigo, nombre, ubicacion, capacidad);
+        } catch (InputMismatchException e) {
+            System.out.println("Error: debe ingresar un valor numerico");
+            sc.nextLine();
+        } finally {
+            System.out.println("Metodo finalizado");
+        }
     }
 
     public void buscarPuntoAcceso(){
@@ -51,35 +57,76 @@ public class PuntoAccesoView {
     }
 
     public void buscarPunto(){
-        
-        System.out.println("Ingrese el numero de punto de acceso que desea ver");
-        int id = sc.nextInt();
-        PuntoAcceso puntos = puntoAccesoController.buscarPorPosicion(parqueController.buscarPuntosAccesos(), (id-1));
-        System.out.println("Posición " + (id)+ ": " + puntos);
+        try {
+            System.out.println("Ingrese la posición del punto de acceso que desea ver (1,2,3,4,5)");
+            int id = sc.nextInt();
+
+            sc.nextLine();
+
+            PuntoAcceso puntos = puntoAccesoController.buscarPorPosicion(parqueController.buscarPuntosAccesos(), (id - 1));
+
+            if (puntos == null) {
+                System.out.println("La posición es inválida o no contiene un punto de acceso");
+                return;
+            }
+
+            System.out.println("Posición " + id + ": " + puntos);
+        } catch (InputMismatchException e) {
+            System.out.println("Error: debe ingresar un valor numerico");
+            sc.nextLine();
+        }
     }
 
     public void modificarPuntoAcceso(){
-        System.out.println("Ingrese el numero de punto de acceso que deseas modificar");
-        int id = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Ingrese la nueva capacidad");
-        int capacidad = sc.nextInt();
-        System.out.println("Ingrese el nuevo estado 1) True, 2) False");
-        int estado = sc.nextInt();
+        try {
+            System.out.println("Ingrese el numero de punto de acceso que deseas modificar");
+            int id = sc.nextInt();
+            sc.nextLine();
 
-        sc.nextLine();
-        
-        PuntoAcceso[] puntos = parqueController.buscarPuntosAccesos();
-        puntoAccesoController.actualizarPuntoAcceso(puntos,(id-1), capacidad, (estado == 1? true :false));
+            if (id < 1 || id > 5) {
+                throw new IllegalArgumentException("La posición debe estar entre 1 y 5");
+            }   
+
+            System.out.println("Ingrese la nueva capacidad");
+            int capacidad = sc.nextInt();
+
+            System.out.println("Ingrese el nuevo estado 1) True, 2) False");
+            int estado = sc.nextInt();
+            sc.nextLine();
+
+            if (estado != 1 && estado != 2) {
+                throw new IllegalArgumentException("El estado solamente puede ser 1 o 2");
+            }
+
+            PuntoAcceso[] puntos = parqueController.buscarPuntosAccesos();
+            puntoAccesoController.actualizarPuntoAcceso(puntos, (id - 1), capacidad, (estado == 1 ? true : false));
+        } catch (InputMismatchException e) {
+            System.out.println("Error: debe ingresar un valor numerico");
+            sc.nextLine();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
 
     public void eliminarPuntoAcceso(){
-        PuntoAcceso[] puntos = parqueController.buscarPuntosAccesos();
-        System.out.println("Ingrese el numero de punto de acceso que desea eliminar");
-        int id = sc.nextInt();
+        try {
+            PuntoAcceso[] puntos = parqueController.buscarPuntosAccesos();
 
-        puntoAccesoController.eliminarPuntoAcceso(puntos, (id-1));
+            if (puntos == null) {
+                System.out.println("No hay un parque creado");
+                return;
+            }
+
+            System.out.println("Ingrese el numero de punto de acceso que desea eliminar");
+            int id = sc.nextInt();
+            sc.nextLine();
+
+            System.out.println(puntoAccesoController.eliminarPuntoAcceso(puntos, (id - 1)));
+        } catch (InputMismatchException e) {
+            System.out.println("Error: debe ingresar un valor numerico");
+            sc.nextLine();
+        }
     }
 
     public void mostrarPuntosAccesoHabilitados(){

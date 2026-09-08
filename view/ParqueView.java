@@ -1,10 +1,14 @@
 package view;
 
 import controller.ParqueController;
+import controller.VisitanteController;
 import java.util.Scanner;
+
+
 
 public class ParqueView {
     private ParqueController parqueController;
+    private VisitanteController visitanteController;
     Scanner sc = new Scanner(System.in);
     
     

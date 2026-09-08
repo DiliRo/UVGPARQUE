@@ -9,6 +9,10 @@ public class PuntoAccesoController {
 
     public boolean agregarPuntoAcceso(PuntoAcceso[] puntos, int posicion, String codigo, String nombre, String ubicacion, int capacidadMaximaHora) {
         try {
+            if (posicion < 0 || posicion > 5) {
+                throw new ArrayIndexOutOfBoundsException("La posición debe estar entre 1 y 5");
+            }
+
             if (puntos[posicion] != null) {
                 return false;
             }
@@ -22,6 +26,7 @@ public class PuntoAccesoController {
             puntos[posicion] = puntoAcceso;
             return true;
         } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
+            System.out.println("Error: La posición debe estar entre 1 y 5");
             return false;
         }
     }
