@@ -2,15 +2,17 @@ package view;
 
 import controller.EncargadoController;
 import controller.ParqueController;
+import controller.VisitanteController;
 import java.util.Scanner;
 public class MenuView {
     Scanner sc = new Scanner(System.in);
         
     ParqueController parqueController = new ParqueController();
+    VisitanteController visitanteController = new VisitanteController();
     ParqueView parqueView = new ParqueView(parqueController);
     PuntoAccesoView puntoAccesoView = new PuntoAccesoView(parqueController);
     EncargadoController encargadoController = new EncargadoController();
-    VisitanteView visitanteView = new VisitanteView();
+    VisitanteView visitanteView = new VisitanteView(parqueController);
 
 
 
@@ -59,9 +61,30 @@ public class MenuView {
                     visitanteView.crearVisitante();
                     break;
                 case 8:
+                    visitanteView.obtenerVisitantes();
                     break;
                 case 9:
+                    visitanteView.buscarVisitante();
                     break;
+                case 10:
+                    visitanteView.editarVisitante();
+                    break;
+                case 11:
+                    visitanteView.eliminarVisitante();
+                    break;
+                case 12:
+                    puntoAccesoView.mostrarPuntosAccesoHabilitados();
+                    puntoAccesoView.mostrarPuntosAccesosDisponibles();
+                    puntoAccesoView.puntoAccesoConMayorCapacidad();
+                    visitanteView.obtenerVisitanteMayorAtracciones();
+                    visitanteView.obtenerVisitanteMayorPuntos();
+                    visitanteView.promedioEdadVisitante();
+                    visitanteView.cantidadVisitante();
+                    break;
+                case 13:
+                    System.out.println("Saliendo...");
+                    break;
+                    
             }
         }while(opcion != 13);
     }

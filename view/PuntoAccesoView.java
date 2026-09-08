@@ -84,11 +84,17 @@ public class PuntoAccesoView {
 
     public void mostrarPuntosAccesoHabilitados(){
         PuntoAcceso[] puntos = parqueController.buscarPuntosAccesos();
-        for (int i = 0; i < puntos.length; i++) {
-            if (puntos[i] != null && puntos[i].getEstado() != false) {
-                System.out.println(i);
-            }
-        }
+        System.out.println("Cantidad de puntos de acceso habilitados: " + puntoAccesoController.contarHabilitados(puntos));
+    }
+
+    public void mostrarPuntosAccesosDisponibles(){
+        PuntoAcceso[] puntos = parqueController.buscarPuntosAccesos();
+        System.out.println("Puntos de acceso disponibles: " + puntoAccesoController.contarDisponibles(puntos));
+    }
+
+    public void puntoAccesoConMayorCapacidad(){
+        PuntoAcceso[] puntos = parqueController.buscarPuntosAccesos();
+        System.out.println("Punto de acceso con mayor capacidad: " + puntoAccesoController.obtenerMayorCapacidad(puntos));
     }
 
 

@@ -15,6 +15,10 @@ public class ParqueController {
         
     }
     
+    public Parque mandarParque(){
+        return parque;
+    }
+
     public PuntoAcceso[] buscarPuntosAccesos(){
         return parque.getPuntosAcceso();
     }
